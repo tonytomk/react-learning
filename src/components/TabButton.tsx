@@ -1,8 +1,13 @@
-export default function TabButton(props: { children?: string, onSelect: any, isSelected: boolean }) {
+type TabButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  children?: string;
+  isSelected: boolean;
+};
+
+export default function TabButton({ children, isSelected, ...rest }: TabButtonProps) {
     // function handleClick() {
-    //     alert(`You clicked the ${props.children} button!`);
+    //     alert(`You clicked the ${children} button!`);
     // }
   return (
-    <li><button className={props.isSelected ? "active" : '' } onClick={props.onSelect}>{props.children}</button></li>
+    <li><button className={isSelected ? "active" : '' } {...rest}>{children}</button></li>
   );
 }
